@@ -1,0 +1,24 @@
+version: "1"
+services:
+  registration-micro:
+    container_name: registration_microservice
+    build:
+      context: ./Registration_Microservice
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports:
+      - "5001:5001"
+    environment:
+      NODE_ENV: production
+      PORT: 5001
+  authentication-micro:
+    container_name: authentication_microservice
+    build:
+      context: ./Authentication_Microservice
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports:
+      - "5002:5002"
+    environment:
+      NODE_ENV: production
+      PORT: 5002
